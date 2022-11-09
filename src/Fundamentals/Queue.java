@@ -1,29 +1,27 @@
 package Fundamentals;
 
+@SuppressWarnings("all")
 public class Queue<T> {
-    private Node first;
-    private Node last;
+    private Node<T> first;
+    private Node<T> last;
     private int N;
-    private class Node {
-        T item;
-        Node next;
-    }
+
     public boolean isEmpty() { return first == null; }
     public int size() { return N; }
 
     public void enqueue(T item) {
-        Node oldlast = last;
-        last = new Node();
-        last.next = null;
+        Node<T> oldlast = last;
+        last = new Node<T>();
+        last.setNext(null);
         if (isEmpty()) first = last;
-        else oldlast.next = last;
+        else oldlast.setNext(last);
         N++;
     }
 
     public T dequeue()
     {
-        T item = first.item;
-        first = first.next;
+        T item = first.getItem();
+        first = first.getNext();
         if (isEmpty()) last = null;
         N--;
         return item;
