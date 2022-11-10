@@ -41,17 +41,4 @@ public class Stack<T> implements Iterable<T> {
             return item;
         }
     }
-
-    public static void main(String[] args) {
-        String[] s = "This is a stack".split(" ");
-        Stack<String> stack = new Stack<>();
-        for(String w : s) {
-            System.out.println(stack.isEmpty());
-            stack.push(w);
-        }
-        for (String s1 : stack) {
-            System.out.print(s1 + " ");
-            System.out.println(stack.pop());
-        }
-    }
 }
