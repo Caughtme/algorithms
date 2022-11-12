@@ -2,7 +2,6 @@ package Fundamentals;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
-
 import java.util.Iterator;
 
 public class Queue<T> implements Iterable<T> {
