@@ -1,5 +1,8 @@
 package Fundamentals;
 
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 import java.util.Iterator;
 
 public class Queue<T> implements Iterable<T> {
@@ -28,10 +31,6 @@ public class Queue<T> implements Iterable<T> {
         return item;
     }
 
-    public static void main(String[] args) {
-        System.out.println("Hello!");
-    }
-
     @Override
     public Iterator<T> iterator() {
         return new QueueIterator();
@@ -50,5 +49,17 @@ public class Queue<T> implements Iterable<T> {
             current = current.getNext();
             return item;
         }
+    }
+
+    public static void main(String[] args) {
+        Queue<String> queue = new Queue<>();
+        while (!StdIn.isEmpty()) {
+            String item = StdIn.readString();
+            if (!item.equals("-"))
+                queue.enqueue(item);
+            else if (!queue.isEmpty())
+                StdOut.print(queue.dequeue() + " ");
+        }
+        StdOut.println("(" + queue.size() + " left on queue)");
     }
 }
