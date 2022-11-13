@@ -2,7 +2,7 @@ package Fundamentals;
 
 import edu.princeton.cs.algs4.StdIn;
 
-public class E03_Parentheses {
+public class E04_Parentheses {
     public static void main(String[] args) {
         int count = 0;
         Stack<String> left = new Stack<>();

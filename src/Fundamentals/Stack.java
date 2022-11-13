@@ -1,6 +1,7 @@
 package Fundamentals;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class Stack<T> implements Iterable<T> {
     private Node<T> first;
@@ -22,6 +23,12 @@ public class Stack<T> implements Iterable<T> {
         N--;
         return item;
     }
+
+    public T peek() {
+        if (isEmpty()) throw new NoSuchElementException("Stack underflow");
+        return first.getItem();
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new StackIterator();
