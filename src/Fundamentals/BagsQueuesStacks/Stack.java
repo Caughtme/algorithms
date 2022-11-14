@@ -1,4 +1,4 @@
-package Fundamentals;
+package Fundamentals.BagsQueuesStacks;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

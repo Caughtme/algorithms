@@ -1,4 +1,4 @@
-package Fundamentals;
+package Fundamentals.BagsQueuesStacks;
 
 public class FixedCapacityStackStrings {
     private String[] a;

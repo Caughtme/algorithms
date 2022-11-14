@@ -1,4 +1,4 @@
-package Fundamentals;
+package Fundamentals.BagsQueuesStacks;
 
 public class Node<T> {
         private T item;

@@ -1,8 +1,7 @@
-package Fundamentals;
+package Fundamentals.BagsQueuesStacks;
 
 import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.Queue;
-import java.util.*;
+import edu.princeton.cs.algs4.Stack;
 
 public class E09_leftParenthesesInsert {
     /**
@@ -10,31 +9,25 @@ public class E09_leftParenthesesInsert {
      * @return the expression with the inserted left parentheses
      */
     public static String leftParenthesesInsert() {
-        Queue<String> ops = new Queue<>();
-        Queue<String> vals = new Queue<>();
-        List<String> exp = new ArrayList<>();
-        StringBuilder expr = new StringBuilder();
+        Stack<String> ops = new Stack<>();
+        Stack<String> vals = new Stack<>();
+        // List<String> exp = new ArrayList<>();
         while (!StdIn.isEmpty())
         {
             String s = StdIn.readString();
             if (s.equals("+") | s.equals("-") | s.equals("*") | s.equals("/") | s.equals("sqrt"))
             {
-                ops.enqueue(s);
+                ops.push(s);
             }
             else if (s.equals(")")) {
-                exp.add("(");
-                exp.add(vals.dequeue());
-                exp.add(ops.dequeue());
-                exp.add(vals.dequeue());
-                exp.add(")");
+                String val1 = vals.pop();
+                String val2 = vals.pop();
+                String ops1 = ops.pop();
+                vals.push("( " + val2 + " " + ops1 + " " + val1 + " )");
             }
-            else vals.enqueue(s);
+            else vals.push(s);
         }
-        for(String se : exp) {
-            expr.append(se);
-            expr.append(" ");
-        }
-        return expr.toString();
+        return vals.toString();
     }
     public static void main(String[] args) {
         String s = leftParenthesesInsert();
