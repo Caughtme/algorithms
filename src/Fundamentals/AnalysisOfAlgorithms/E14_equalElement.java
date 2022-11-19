@@ -1,6 +1,11 @@
 package Fundamentals.AnalysisOfAlgorithms;
 
+import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
+
 import java.util.Arrays;
+import java.util.Random;
 
 public class E14_equalElement {
     public static void printElement(int[] arr1, int[] arr2) {
@@ -12,13 +17,15 @@ public class E14_equalElement {
     public static void compare(int[] arr1, int[] arr2)
     {
         int i = 0;
+        int equal = 0;
         Integer previousEle = null;
         while (i < arr1.length) {
-            int equal = isEqual(arr1, arr2, i, i);
+            equal = isEqual(arr1, arr2, i, i);
             if (equal != -1) i = equal + 1;
-            if (previousEle == null || (equal >= 0 && previousEle != arr1[equal])) {
+            else {System.out.println("none equal value exists."); break;}
+            if (previousEle == null || (equal != -1 && previousEle != arr1[equal])) {
                 previousEle = arr1[equal];
-                System.out.print(previousEle + " ");
+//                System.out.print(previousEle + " ");
             }
         }
     }
@@ -39,14 +46,29 @@ public class E14_equalElement {
         return -1;
     }
 
+    public static double timeTrial(int N)
+    {
+        int Max = 1000;
+        Random rand = new Random(47);
+        int[] a = new int[N];
+        int[] b = new int[N];
+        for (int i = 0; i < N; i++) {
+            a[i] = rand.nextInt(Max);
+            b[i] = rand.nextInt(Max);
+        }
+        Stopwatch stopwatch = new Stopwatch();
+        printElement(a, b);
+        return stopwatch.elapsedTime();
+    }
     public static void main(String[] args) {
         // int[] arr1 = {2, 32, 43, 3, 12, 23};
         ///int[] arr2 = {3, 4, 2, 3, 43, 12};
-        int[] array1 = { 0, 1, 2, 2, 5, 6, 6, 8, 25, 25 };
-        int[] array2 = { -2, 0, 1, 2, 2, 2, 3, 4, 5, 10, 20, 25, 25 };
-        long l = System.currentTimeMillis();
-        printElement(array1, array2);
-        long l1 = System.currentTimeMillis();
-        System.out.println((l1 - l)*100000000);
+        double prev = timeTrial(125);
+        for (int N = 250; N <= 100000; N += N) {
+            double time = timeTrial(N);
+            StdOut.printf("%6d %7.1f", N, time);
+            StdOut.printf("%5.1f\n", time / prev);
+            prev = time;
+        }
     }
 }
