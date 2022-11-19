@@ -1,7 +1,6 @@
 package Fundamentals.AnalysisOfAlgorithms;
 
 import edu.princeton.cs.algs4.StdOut;
-import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
 import java.util.Arrays;
@@ -17,13 +16,13 @@ public class E14_equalElement {
     public static void compare(int[] arr1, int[] arr2)
     {
         int i = 0;
-        int equal = 0;
+        int equal;
         Integer previousEle = null;
         while (i < arr1.length) {
             equal = isEqual(arr1, arr2, i, i);
             if (equal != -1) i = equal + 1;
             else {System.out.println("none equal value exists."); break;}
-            if (previousEle == null || (equal != -1 && previousEle != arr1[equal])) {
+            if (previousEle == null || (previousEle != arr1[equal])) {
                 previousEle = arr1[equal];
 //                System.out.print(previousEle + " ");
             }
