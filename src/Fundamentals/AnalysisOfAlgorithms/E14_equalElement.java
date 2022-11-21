@@ -24,7 +24,7 @@ public class E14_equalElement {
             else {System.out.println("none equal value exists."); break;}
             if (previousEle == null || (previousEle != arr1[equal])) {
                 previousEle = arr1[equal];
-//                System.out.print(previousEle + " ");
+                System.out.print(previousEle + " ");
             }
         }
     }
