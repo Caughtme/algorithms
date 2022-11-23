@@ -1,29 +1,26 @@
 package Fundamentals.AnalysisOfAlgorithms;
 
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
-
-import java.util.Random;
-
-import static Fundamentals.AnalysisOfAlgorithms.E16_ClosestPair.closestPair;
 
 public class timeTrial {
     public static double timeTrial(int N)
     {
-        int Max = 1000;
-        Random rand = new Random(47);
+        int Max = 10;
         int[] a = new int[N];
         int[] b = new int[N];
         for (int i = 0; i < N; i++) {
-            a[i] = rand.nextInt(Max);
-            b[i] = rand.nextInt(Max);
+            a[i] = StdRandom.uniformInt(-Max, Max);
+            b[i] = StdRandom.uniformInt(-Max, Max);
         }
+        int i1 = StdRandom.uniformInt(-10, 10);
         double[] d = new double[N];
         for (int i = 0; i < N; i++) {
-            d[i] = rand.nextDouble();
+            d[i] = StdRandom.uniformDouble();
         }
         Stopwatch stopwatch = new Stopwatch();
-        double[] closestPair1 = closestPair(d);
+        int cnt = E15_TwoSumFaster.TwoSumFaster(a);
         return stopwatch.elapsedTime();
     }
 
