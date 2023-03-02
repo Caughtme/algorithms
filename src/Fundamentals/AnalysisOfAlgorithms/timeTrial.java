@@ -1,11 +1,18 @@
 package Fundamentals.AnalysisOfAlgorithms;
 
+import Utility.Algorithm;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.Stopwatch;
 
 public class timeTrial {
-    public static double timeTrial(int N)
+    private Algorithm algorithm;
+
+    public void setAlgorithm(Algorithm algorithm) {
+        this.algorithm = algorithm;
+    }
+
+    public double timeTrial(int N)
     {
         int Max = 10;
         int[] a = new int[N];
@@ -20,15 +27,16 @@ public class timeTrial {
             d[i] = StdRandom.uniformDouble();
         }
         Stopwatch stopwatch = new Stopwatch();
-        int cnt = E15_TwoSumFaster.TwoSumFaster(a);
+        algorithm.run();
         return stopwatch.elapsedTime();
     }
 
-    public static void main(String[] args) {
-        double prev = timeTrial(125);
-        for (int N = 250; N <= 10000000; N += N) {
-            double time = timeTrial(N);
-            StdOut.printf("%6d %7.1f", N, time);
+    public void runTrial(int initialTimes, long MaxTimes)
+    {
+        double prev = timeTrial(initialTimes);
+        for (int i = 2 * initialTimes; i < MaxTimes; i += i) {
+            double time = timeTrial(i);
+            StdOut.printf("%6d %7.1f", i, time);
             StdOut.printf("%5.1f\n", time / prev);
             prev = time;
         }
