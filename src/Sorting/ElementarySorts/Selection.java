@@ -1,19 +1,13 @@
 package Sorting.ElementarySorts;
 
 import Utility.Sort;
-
-import static Sorting.Example.*;
+import static Utility.SortUtility.exch;
+import static Utility.SortUtility.less;
 
 public class Selection implements Sort {
 
-    private Comparable[] a;
-
-    public void setA(Comparable[] a) {
-        this.a = a;
-    }
-
     @Override
-    public void sort() {
+    public void sort(Comparable[] a) {
         int N = a.length;
         for (int i = 0; i < N; i++) {
             int min = i;

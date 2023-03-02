@@ -1,10 +1,10 @@
 package Utility;
 
 public interface Sort extends Algorithm{
-    public void sort();
+    void sort(Comparable[] a);
 
     @Override
-    default void run() {
-        this.sort();
+    default void run(Comparable[] a) {
+        this.sort(a);
     }
 }

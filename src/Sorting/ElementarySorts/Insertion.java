@@ -1,17 +1,13 @@
 package Sorting.ElementarySorts;
 
 import Utility.Sort;
-
-import static Sorting.Example.exch;
-import static Sorting.Example.less;
+import static Utility.SortUtility.exch;
+import static Utility.SortUtility.less;
 
 public class Insertion implements Sort
 {
-    private Comparable[] a;
-
     @Override
-    public void sort()
-    {
+    public void sort(Comparable[] a) {
         int N = a.length;
         for (int i = 1; i < a.length; i++)
         {
@@ -19,4 +15,5 @@ public class Insertion implements Sort
                 exch(a, j,j-1);
         }
     }
+
 }

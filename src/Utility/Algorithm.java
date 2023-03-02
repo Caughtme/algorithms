@@ -1,5 +1,5 @@
 package Utility;
 
 public interface Algorithm {
-    public void run();
+    void run(Comparable[] a);
 }
